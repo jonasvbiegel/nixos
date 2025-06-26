@@ -1,7 +1,7 @@
 mod: {
   "${mod}+Return" = "exec kitty";
   "${mod}+Shift+q" = "kill";
-  "${mod}+d" = "exec dmenu";
+  "${mod}+d" = "exec --no-startup-id rofi -show drun";
 
   "${mod}+h" = "focus left";
   "${mod}+j" = "focus down";

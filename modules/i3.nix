@@ -20,7 +20,7 @@ in {
       defaultWorkspace = "workspace number 1";
       window = {
         titlebar = false;
-        border = 1;
+        border = 2;
       };
       keybindings = import ./i3-keybindings.nix "${modifier}";
       startup = [
@@ -36,5 +36,9 @@ in {
         }
       ];
     };
+  };
+
+  programs.rofi = {
+    enable = true;
   };
 }
