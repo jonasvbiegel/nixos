@@ -20,9 +20,9 @@
         # border-bottom-size = 2;
         # border-bottom-color = "#7aa2f7";
 
-        font-0 = "CaskaydiaMono Nerd Font:size=10:weight=500;2";
-        font-1 = "CaskaydiaMono Nerd Font:size=10:weight=100;2";
-        font-2 = "CaskaydiaMono Nerd Font:size=10:weight=bold;2";
+        font-0 = "CaskaydiaMono Nerd Font:size=16:weight=500;2";
+        font-1 = "CaskaydiaMono Nerd Font:size=16:weight=100;2";
+        font-2 = "CaskaydiaMono Nerd Font:size=16:weight=bold;2";
 
         modules-left = "xworkspaces systray";
         modules-center = "xwindow";

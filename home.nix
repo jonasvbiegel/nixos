@@ -20,6 +20,9 @@
       firefox
       dmenu
       discord
+      maim
+      xclip
+      btop
     ];
   };
 
@@ -38,7 +41,7 @@
       font = {
         package = pkgs.nerd-fonts.caskaydia-cove;
         name = "CaskaydiaCove Nerd Font";
-        size = 11;
+        size = 16;
       };
       settings = {
         window_padding_width = 2;

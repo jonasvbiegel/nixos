@@ -3,11 +3,13 @@
   pkgs,
   lib,
   ...
-}: {
+}: let
+  modifier = "Mod4";
+in {
   xsession.windowManager.i3 = {
     enable = true;
     config = {
-      modifier = "Mod4";
+      modifier = "${modifier}";
       terminal = "kitty";
       bars = [];
       gaps = {
@@ -20,6 +22,7 @@
         titlebar = false;
         border = 1;
       };
+      keybindings = import ./i3-keybindings.nix "${modifier}";
       startup = [
         {
           command = "systemctl --user restart polybar";
