@@ -11,7 +11,7 @@
     script = "polybar polybar &";
     settings = {
       "bar/polybar" = {
-        monitor = "LVDS-1";
+        monitor = "eDP-1";
         width = "100%";
         height = "4%";
 
