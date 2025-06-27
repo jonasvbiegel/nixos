@@ -16,6 +16,11 @@
       viAlias = true;
       vimAlias = true;
 
+      clipboard = {
+        enable = true;
+        registers = "unnamedplus";
+      };
+
       git.enable = true;
 
       hideSearchHighlight = true;
@@ -33,7 +38,7 @@
           key = "<C-p>";
           mode = "n";
           silent = true;
-          action = ":FzfLua files<CR>";
+          action = "<cmd>FzfLua files<CR>";
         }
         # make c d and c u do zz after to center
         {
@@ -47,6 +52,33 @@
           mode = "n";
           silent = true;
           action = "15k zz";
+        }
+        # keybind to show full diagnostics
+        {
+          key = "<leader>r";
+          mode = "n";
+          silent = true;
+          action = "<cmd>lua vim.diagnostic.open_float(0, {scope='line'})<CR>";
+        }
+        # bind f4 to show code actions
+        {
+          key = "<F4>";
+          mode = "n";
+          silent = true;
+          action = "<cmd>lua vim.lsp.buf.code_action()<CR>";
+        }
+        # make gd and gD to use lsp
+        {
+          key = "gd";
+          mode = "n";
+          silent = true;
+          action = "<cmd>lua vim.lsp.buf.definition()<CR>";
+        }
+        {
+          key = "gD";
+          mode = "n";
+          silent = true;
+          action = "<cmd>lua vim.lsp.buf.declaration()<CR>";
         }
       ];
 
@@ -87,13 +119,14 @@
         enable = true;
         mappings = {
           closeCurrent = "<leader>n";
-          cycleNext = "<C-h>";
-          cyclePrevious = "<C-l>";
+          cycleNext = "<C-l>";
+          cyclePrevious = "<C-h>";
         };
         setupOpts.options = {
           numbers = "none";
           show_buffer_close_icons = false;
           tab_size = 1;
+          style = "none";
         };
       };
 
