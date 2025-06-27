@@ -58,6 +58,11 @@ mod: {
 
   "${mod}+r" = "mode resize";
 
+  # media keys
+  "XF86AudioRaiseVolume" = "exec pactl set-sink-volume 0 +5%";
+  "XF86AudioLowerVolume" = "exec pactl set-sink-volume 0 -5%";
+  "XF86AudioMute" = "exec pactl set-sink-mute 0 toggle";
+
   # screenshot keybinds
   "${mod}+Shift+s" = "exec --no-startup-id maim --select | xclip -selection clipboard -t image/png";
   "Print" = "exec --no-startup-id maim | xclip -selection clipboard -t image/png";

@@ -67,7 +67,7 @@
   users.users.jonas = {
     isNormalUser = true;
     description = "jonas";
-    extraGroups = ["networkmanager" "wheel" "audio"];
+    extraGroups = ["networkmanager" "wheel" "audio" "video"];
     shell = pkgs.zsh;
     packages = with pkgs; [];
   };

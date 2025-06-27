@@ -13,7 +13,7 @@ in {
       terminal = "kitty";
       bars = [];
       gaps = {
-        inner = 5;
+        inner = 10;
         outer = 5;
         smartBorders = "on";
       };

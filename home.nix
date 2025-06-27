@@ -17,12 +17,12 @@
     packages = with pkgs; [
       fastfetch
       lf
-      # firefox
       dmenu
       discord
       maim
       xclip
       btop
+      acpilight
     ];
   };
 
