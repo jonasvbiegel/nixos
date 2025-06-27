@@ -54,10 +54,8 @@
   console.keyMap = "dk-latin1";
 
   #pulse audio
-  hardware.pulseaudio.enable = true;
   services.pipewire.enable = false;
   services.pulseaudio.enable = true;
-  hardware.pulseaudio.package = pkgs.pulseaudioFull;
 
   #xserver
   services.xserver.enable = true;
