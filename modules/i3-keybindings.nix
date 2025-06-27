@@ -2,6 +2,7 @@ mod: {
   "${mod}+Return" = "exec kitty";
   "${mod}+Shift+q" = "kill";
   "${mod}+d" = "exec --no-startup-id rofi -show drun";
+  "${mod}+b" = "exec firefox";
 
   "${mod}+h" = "focus left";
   "${mod}+j" = "focus down";
@@ -13,7 +14,7 @@ mod: {
   "${mod}+Shift+Up" = "move up";
   "${mod}+Shift+Right" = "move right";
 
-  "${mod}+b" = "split h";
+  "${mod}+n" = "split h";
   "${mod}+v" = "split v";
   "${mod}+f" = "fullscreen toggle";
 
