@@ -45,6 +45,7 @@
       };
       settings = {
         window_padding_width = 2;
+        modify_font = "cell_height 2px";
       };
     };
 
