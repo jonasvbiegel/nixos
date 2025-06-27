@@ -2,7 +2,7 @@ mod: {
   "${mod}+Return" = "exec kitty";
   "${mod}+Shift+q" = "kill";
   "${mod}+d" = "exec --no-startup-id rofi -show drun";
-  "${mod}+b" = "exec firefox";
+  "${mod}+b" = "exec librewolf";
 
   "${mod}+h" = "focus left";
   "${mod}+j" = "focus down";

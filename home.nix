@@ -17,7 +17,7 @@
     packages = with pkgs; [
       fastfetch
       lf
-      firefox
+      # firefox
       dmenu
       discord
       maim
@@ -34,6 +34,10 @@
     };
 
     gh.enable = true;
+
+    librewolf = {
+      enable = true;
+    };
 
     kitty = {
       enable = true;
