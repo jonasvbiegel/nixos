@@ -53,6 +53,15 @@
       shellAliases = {
         nxs = "sudo nixos-rebuild switch --flake ~/flake/.";
         nix-init = "nix flake init --template templates\#utils-generic && direnv allow";
+
+        # git aliases
+        gaa = "git add -A";
+        gc = "git commit";
+        gps = "git push";
+        gf = "git fetch";
+        gpl = "git pull";
+        gch = "git checkout";
+        gst = "git status";
       };
     };
 

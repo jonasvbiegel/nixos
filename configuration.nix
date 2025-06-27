@@ -47,6 +47,7 @@
   services.xserver.xkb = {
     layout = "dk";
     variant = "";
+    options = "caps:escape";
   };
 
   # Configure console keymap
