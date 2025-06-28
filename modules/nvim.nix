@@ -107,6 +107,7 @@
             cursorline.timeout = 4;
           };
         };
+        nvim-web-devicons.enable = true;
       };
 
       autopairs.nvim-autopairs = {
@@ -172,6 +173,12 @@
         };
         rust = {
           enable = true;
+        };
+        markdown = {
+          # enable = true;
+          extensions.render-markdown-nvim = {
+            enable = true;
+          };
         };
       };
 
