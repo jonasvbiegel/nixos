@@ -14,6 +14,13 @@
     username = "jonas";
     homeDirectory = "/home/jonas";
 
+    pointerCursor = {
+      name = "Adwaita";
+      package = pkgs.adwaita-icon-theme;
+      gtk.enable = true;
+      x11.enable = true;
+    };
+
     packages = with pkgs; [
       fastfetch
       lf
@@ -28,13 +35,6 @@
       unzip
       feh
     ];
-
-    pointerCursor = {
-      name = "Adwaita";
-      package = pkgs.adwaita-icon-theme;
-      gtk.enable = true;
-      x11.enable = true;
-    };
   };
 
   programs = {
