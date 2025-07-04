@@ -20,7 +20,7 @@ in {
       defaultWorkspace = "workspace number 1";
       window = {
         titlebar = false;
-        border = 2;
+        border = 3;
       };
       keybindings = import ./i3-keybindings.nix "${modifier}";
       startup = [
@@ -30,7 +30,7 @@ in {
           notification = false;
         }
         {
-          command = "${pkgs.feh}/bin/feh --bg-scale ./wallpapers/wall1.jpg";
+          command = "${pkgs.feh}/bin/feh --bg-scale ~/flake/modules/wallpapers/wallpaper.jpg";
           always = true;
           notification = false;
         }
@@ -41,4 +41,19 @@ in {
   programs.rofi = {
     enable = true;
   };
+
+  # services.picom = {
+  #   enable = true;
+  #   fade = false;
+  #   shadow = false;
+  #   settings = {
+  #     blur = {
+  #       method = "dual_kawase";
+  #       size = 10;
+  #       deviation = 5.0;
+  #       strength = 7;
+  #     };
+  #     backend = "glx";
+  #   };
+  # };
 }

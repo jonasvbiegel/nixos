@@ -19,9 +19,6 @@
 
         background = "#AA000000";
 
-        # border-right-size = 2;
-        # border-right-color = "#AA000000";
-
         module-margin = 1;
 
         font-0 = "CaskaydiaMono Nerd Font:size=16:weight=500;2";
@@ -29,7 +26,7 @@
         font-2 = "CaskaydiaMono Nerd Font:size=16:weight=bold;2";
 
         modules-left = "xworkspaces";
-        # modules-center = "xwindow";
+        modules-center = "";
         modules-right = "systray pulseaudio wireless-network battery time";
       };
 
@@ -42,18 +39,15 @@
         type = "internal/xworkspaces";
 
         label-active = "%name%";
-        # label-active-background = "#00FFFFFF";
         label-active-foreground = "#FFFFFFFF";
         label-active-padding = 1;
 
         label-occupied = "%name%";
-        # label-occupied-background = "#00000000";
         label-occupied-foreground = "#FF888888";
         label-occupied-font = "#FF888888";
         label-occupied-padding = 1;
 
         label-empty = "%name%";
-        # label-empty-background = "#00000000";
         label-empty-foreground = "#FF888888";
         label-empty-padding = 1;
         label-empty-font = 2;

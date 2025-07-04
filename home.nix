@@ -23,7 +23,18 @@
       xclip
       btop
       acpilight
+      zathura
+      zip
+      unzip
+      feh
     ];
+
+    pointerCursor = {
+      name = "Adwaita";
+      package = pkgs.adwaita-icon-theme;
+      gtk.enable = true;
+      x11.enable = true;
+    };
   };
 
   programs = {
@@ -50,6 +61,7 @@
       settings = {
         window_padding_width = 2;
         modify_font = "cell_height 2px";
+        # background_opacity = 0.95;
       };
     };
 

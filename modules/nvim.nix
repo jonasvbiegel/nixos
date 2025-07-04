@@ -23,6 +23,12 @@
 
       git.enable = true;
 
+      mini = {
+        ai.enable = true;
+        pairs.enable = true;
+        surround.enable = true;
+      };
+
       hideSearchHighlight = true;
       searchCase = "ignore";
       keymaps = [
@@ -107,11 +113,8 @@
             cursorline.timeout = 4;
           };
         };
+        indent-blankline.enable = true;
         nvim-web-devicons.enable = true;
-      };
-
-      autopairs.nvim-autopairs = {
-        enable = true;
       };
 
       statusline.lualine.enable = true;
@@ -128,6 +131,7 @@
           show_buffer_close_icons = false;
           tab_size = 1;
           style = "none";
+          separator_style = "slant";
         };
       };
 
@@ -143,6 +147,7 @@
         enable = true;
         name = "tokyonight";
         style = "night";
+        transparent = false;
       };
 
       treesitter = {
@@ -175,10 +180,14 @@
           enable = true;
         };
         markdown = {
-          # enable = true;
+          enable = true;
+          format.package = pkgs.deno;
           extensions.render-markdown-nvim = {
             enable = true;
           };
+        };
+        typst = {
+          enable = true;
         };
       };
 
