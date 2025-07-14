@@ -54,8 +54,8 @@
       enable = true;
       themeFile = "tokyo_night_night";
       font = {
-        package = pkgs.nerd-fonts.caskaydia-cove;
-        name = "CaskaydiaCove Nerd Font";
+        package = pkgs.nerd-fonts.fira-code;
+        name = "FiraCode Nerd Font";
         size = 16;
       };
       settings = {

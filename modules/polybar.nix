@@ -4,7 +4,7 @@
   lib,
   ...
 }: {
-  home.packages = [pkgs.nerd-fonts.caskaydia-mono];
+  home.packages = [pkgs.nerd-fonts.fira-mono];
 
   services.polybar = {
     # this makes pulseaudio work
@@ -21,9 +21,9 @@
 
         module-margin = 1;
 
-        font-0 = "CaskaydiaMono Nerd Font:size=16:weight=500;2";
-        font-1 = "CaskaydiaMono Nerd Font:size=16:weight=100;2";
-        font-2 = "CaskaydiaMono Nerd Font:size=16:weight=bold;2";
+        font-0 = "FiraMono Nerd Font:size=16:weight=100;2";
+        font-1 = "FiraMono Nerd Font:size=16:weight=100;2";
+        font-2 = "FiraMono Nerd Font:size=16:weight=bold;2";
 
         modules-left = "xworkspaces";
         modules-center = "";

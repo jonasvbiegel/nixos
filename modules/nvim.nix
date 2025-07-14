@@ -186,7 +186,19 @@
             enable = true;
           };
         };
+        html = {
+          enable = true;
+        };
+        css = {
+          enable = true;
+        };
+        ts = {
+          enable = true;
+        };
         typst = {
+          enable = true;
+        };
+        clang = {
           enable = true;
         };
       };
