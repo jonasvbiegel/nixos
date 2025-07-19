@@ -9,10 +9,10 @@ mod: {
   "${mod}+k" = "focus up";
   "${mod}+l" = "focus right";
 
-  "${mod}+Shift+Left" = "move left";
-  "${mod}+Shift+Down" = "move down";
-  "${mod}+Shift+Up" = "move up";
-  "${mod}+Shift+Right" = "move right";
+  "${mod}+Shift+h" = "move left";
+  "${mod}+Shift+j" = "move down";
+  "${mod}+Shift+k" = "move up";
+  "${mod}+Shift+l" = "move right";
 
   "${mod}+n" = "split h";
   "${mod}+v" = "split v";

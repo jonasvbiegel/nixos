@@ -27,6 +27,12 @@
         ai.enable = true;
         pairs.enable = true;
         surround.enable = true;
+        files.enable = true;
+      };
+
+      statusline.lualine = {
+        enable = true;
+        refresh.statusline = 50;
       };
 
       hideSearchHighlight = true;
@@ -39,12 +45,18 @@
           silent = true;
           action = "<leader>";
         }
-        # set ctrl p to open fzf lua files
+        # set ctrl p to open fzf lua files and leader r to open fzf lua buffers
         {
           key = "<C-p>";
           mode = "n";
           silent = true;
           action = "<cmd>FzfLua files<CR>";
+        }
+        {
+          key = "<leader>r";
+          mode = "n";
+          silent = true;
+          action = "<cmd>FzfLua buffers<CR>";
         }
         # make c d and c u do zz after to center
         {
@@ -86,6 +98,30 @@
           silent = true;
           action = "<cmd>lua vim.lsp.buf.declaration()<CR>";
         }
+        {
+          key = "<C-æ>";
+          mode = "n";
+          silent = true;
+          action = "<cmd>lua MiniFiles.open()<CR>";
+        }
+        {
+          key = "<leader>n";
+          mode = "n";
+          silent = true;
+          action = "<cmd>NoNeckPain<CR>";
+        }
+        {
+          key = "<C-h>";
+          mode = "n";
+          silent = true;
+          action = "<cmd>wincmd h<CR>";
+        }
+        {
+          key = "<C-l>";
+          mode = "n";
+          silent = true;
+          action = "<cmd>wincmd l<CR>";
+        }
       ];
 
       options = {
@@ -117,24 +153,6 @@
         nvim-web-devicons.enable = true;
       };
 
-      statusline.lualine.enable = true;
-
-      tabline.nvimBufferline = {
-        enable = true;
-        mappings = {
-          closeCurrent = "<leader>n";
-          cycleNext = "<C-l>";
-          cyclePrevious = "<C-h>";
-        };
-        setupOpts.options = {
-          numbers = "none";
-          show_buffer_close_icons = false;
-          tab_size = 1;
-          style = "none";
-          separator_style = "slant";
-        };
-      };
-
       autocomplete.nvim-cmp = {
         enable = true;
         mappings = {
@@ -145,9 +163,11 @@
 
       theme = {
         enable = true;
-        name = "tokyonight";
-        style = "night";
-        transparent = false;
+        name = "oxocarbon";
+        style = "dark";
+        # name = "tokyonight";
+        # style = "night";
+        # transparent = false;
       };
 
       treesitter = {
@@ -207,6 +227,10 @@
         tabout = {
           package = pkgs.vimPlugins.tabout-nvim;
           setup = "require('tabout').setup {}";
+        };
+        no-neck-pain = {
+          package = pkgs.vimPlugins.no-neck-pain-nvim;
+          setup = "require('no-neck-pain').setup {}";
         };
       };
 

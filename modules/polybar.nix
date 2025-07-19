@@ -4,7 +4,7 @@
   lib,
   ...
 }: {
-  home.packages = [pkgs.nerd-fonts.fira-mono];
+  home.packages = [pkgs.nerd-fonts.fira-code];
 
   services.polybar = {
     # this makes pulseaudio work
@@ -21,13 +21,17 @@
 
         module-margin = 1;
 
-        font-0 = "FiraMono Nerd Font:size=16:weight=100;2";
-        font-1 = "FiraMono Nerd Font:size=16:weight=100;2";
-        font-2 = "FiraMono Nerd Font:size=16:weight=bold;2";
+        padding-right = 1;
+
+        separator = "|";
+
+        font-0 = "FiraCode Nerd Font Mono:size=16;2";
+        font-1 = "FiraCode Nerd Font Mono:size=40:weight=bold;2";
+        font-2 = "FiraCode Nerd Font Mono:size=40:weight=bold;2";
 
         modules-left = "xworkspaces";
-        modules-center = "";
-        modules-right = "systray pulseaudio wireless-network battery time";
+        modules-center = "time";
+        modules-right = "systray pulseaudio wireless-network battery";
       };
 
       "module/xwindow" = {
@@ -69,9 +73,6 @@
 
         label = "%date%";
         label-padding = "13pt";
-
-        format-prefix = "";
-        format-prefix-font = 2;
       };
 
       "module/battery" = {
@@ -82,9 +83,9 @@
 
         low-at = 10;
 
-        label-charging = "󰁹 %percentage%%";
+        label-charging = "bat %percentage%%";
         label-charging-spacing = 2;
-        label-discharging = "󰁹 %percentage%%";
+        label-discharging = "bat %percentage%%";
         label-discharging-spacing = 2;
       };
 
@@ -92,8 +93,8 @@
         type = "internal/network";
         interface = "wlp1s0";
 
-        format-connected = "󰖩  <label-connected>";
-        format-disconnected = "󰖪  <label-disconnected>";
+        format-connected = "wifi <label-connected>";
+        format-disconnected = "wifi <label-disconnected>";
 
         label-connected = "%essid%";
         label-disconnected = "disconnected";
@@ -107,9 +108,9 @@
         format-volume = "<label-volume>";
         format-muted = "<label-muted>";
 
-        label-volume = "  %percentage%%";
+        label-volume = "vol %percentage%%";
 
-        label-muted = "  %percentage%%";
+        label-muted = "vol %percentage%%";
         label-muted-foreground = "#FF888888";
       };
 

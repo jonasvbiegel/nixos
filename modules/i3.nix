@@ -30,30 +30,41 @@ in {
           notification = false;
         }
         {
-          command = "${pkgs.feh}/bin/feh --bg-scale ~/flake/modules/wallpapers/wallpaper.jpg";
+          command = "${pkgs.feh}/bin/feh --bg-scale ~/flake/modules/wallpapers/wallpaper10.jpg";
           always = true;
           notification = false;
         }
       ];
+      colors = {
+        focused = {
+          background = "#5c5c5c";
+          border = "#5c5c5c";
+          childBorder = "#5c5c5c";
+          indicator = "#5c5c5c";
+          text = "#5c5c5c";
+        };
+        unfocused = {
+          background = "#292929";
+          border = "#292929";
+          childBorder = "#292929";
+          indicator = "#292929";
+          text = "#292929";
+        };
+      };
     };
   };
 
   programs.rofi = {
     enable = true;
+    theme = "~/flake/modules/rounded-gray-dark.rasi/";
   };
 
-  # services.picom = {
-  #   enable = true;
-  #   fade = false;
-  #   shadow = false;
-  #   settings = {
-  #     blur = {
-  #       method = "dual_kawase";
-  #       size = 10;
-  #       deviation = 5.0;
-  #       strength = 7;
-  #     };
-  #     backend = "glx";
-  #   };
-  # };
+  services.picom = {
+    enable = true;
+    fade = false;
+    shadow = false;
+    settings = {
+      backend = "glx";
+    };
+  };
 }
