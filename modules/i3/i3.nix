@@ -56,7 +56,7 @@ in {
 
   programs.rofi = {
     enable = true;
-    theme = "~/flake/modules/rounded-gray-dark.rasi/";
+    theme = "~/flake/modules/i3/rounded-gray-dark.rasi/";
   };
 
   services.picom = {

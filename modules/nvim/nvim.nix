@@ -163,11 +163,11 @@
 
       theme = {
         enable = true;
-        name = "oxocarbon";
-        style = "dark";
-        # name = "tokyonight";
-        # style = "night";
-        # transparent = false;
+        # name = "oxocarbon";
+        # style = "dark";
+        # name = "onedark";
+        # style = "warmer";
+        transparent = true;
       };
 
       treesitter = {
@@ -231,6 +231,14 @@
         no-neck-pain = {
           package = pkgs.vimPlugins.no-neck-pain-nvim;
           setup = "require('no-neck-pain').setup {}";
+        };
+        onedarkpro = {
+          package = pkgs.vimPlugins.onedarkpro-nvim;
+          setup = "require('onedarkpro').setup ({
+            colors = {
+              onedark = { bg = '#161616' },
+            },
+          })";
         };
       };
 

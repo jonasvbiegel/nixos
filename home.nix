@@ -5,9 +5,12 @@
   ...
 }: {
   imports = [
-    ./modules/nvim.nix
-    ./modules/i3.nix
-    ./modules/polybar.nix
+    # ./modules/nvim.nix
+    # ./modules/i3.nix
+    # ./modules/polybar.nix
+    ./modules/nvim/nvim.nix
+    ./modules/i3/i3.nix
+    ./modules/i3/polybar.nix
   ];
 
   home = {
@@ -52,68 +55,47 @@
 
     kitty = {
       enable = true;
-      themeFile = "adwaita_dark";
+      themeFile = "OneDark-Pro";
       shellIntegration.enableZshIntegration = true;
       font = {
-        package = pkgs.nerd-fonts.fira-code;
-        name = "FiraCode Nerd Font Mono";
-        size = 16;
+        # package = pkgs.nerd-fonts.fira-code;
+        # name = "FiraCode Nerd Font Mono";
+        package = pkgs.nerd-fonts.code-new-roman;
+        name = "CodeNewRoman Nerd Font Mono";
+        size = 18;
       };
       settings = {
         background_opacity = "0.95";
         window_padding_width = 4;
         modify_font = "cell_height 1px";
       };
-      # oxocarbon theme :D
       extraConfig = "
-  foreground #dde1e6
-background #161616
-selection_foreground #f2f4f8
-selection_background #525252
+          foreground #979eab
+          background #161616
 
-cursor #f2f4f8
-cursor_text_color #393939
+          color0 #282c34
+          color1 #e06c75
+          color2 #98c379
+          color3 #e5c07b
+          color4 #61afef
+          color5 #be5046
+          color6 #56b6c2
+          color7 #979eab
+          color8 #393e48
+          color9 #d19a66
+          color10 #56b6c2
+          color11 #e5c07b
+          color12 #61afef
+          color13 #be5046
+          color14 #56b6c2
+          color15 #abb2bf
 
-url_color #ee5396
-url_style single
+          # Tab Bar
 
-active_border_color #ee5396
-inactive_border_color #ff7eb6
-
-bell_border_color #ee5396
-
-wayland_titlebar_color system
-macos_titlebar_color system
-
-active_tab_foreground #161616
-active_tab_background #ee5396
-inactive_tab_foreground #dde1e6
-inactive_tab_background #393939
-tab_bar_background #161616
-
-color0 #262626
-color8 #393939
-
-color1 #ff7eb6
-color9 #ff7eb6
-
-color2  #42be65
-color10 #42be65
-
-color3  #82cfff
-color11 #82cfff
-
-color4  #33b1ff
-color12 #33b1ff
-
-color5  #ee5396
-color13 #ee5396
-
-color6  #3ddbd9
-color14 #3ddbd9
-
-color7  #dde1e6
-color15 #ffffff
+          active_tab_foreground   #282c34
+          active_tab_background   #979eab
+          inactive_tab_foreground #abb2bf
+          inactive_tab_background #282c34
         ";
     };
 
