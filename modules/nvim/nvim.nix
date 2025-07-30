@@ -1,7 +1,7 @@
 {
-  # config,
+  config,
   pkgs,
-  # lib,
+  lib,
   ...
 }: {
   programs.neovim = {
@@ -53,7 +53,7 @@
           action = "<cmd>FzfLua files<CR>";
         }
         {
-          key = "<leader>r";
+          key = "<C-,>";
           mode = "n";
           silent = true;
           action = "<cmd>FzfLua buffers<CR>";
@@ -121,6 +121,21 @@
           mode = "n";
           silent = true;
           action = "<cmd>wincmd l<CR>";
+        }
+        {
+          key = "<leader>d";
+          mode = "n";
+          silent = true;
+          action = "
+            function()
+            if vim.diagnostic.is_enabled() then
+              vim.diagnostic.enable(false)
+            else
+              vim.diagnostic.enable()
+            end
+            end
+            ";
+          lua = true;
         }
       ];
 
@@ -232,19 +247,43 @@
           package = pkgs.vimPlugins.no-neck-pain-nvim;
           setup = "require('no-neck-pain').setup {}";
         };
-        onedarkpro = {
-          package = pkgs.vimPlugins.onedarkpro-nvim;
-          setup = "require('onedarkpro').setup ({
-            colors = {
-              onedark = { bg = '#161616' },
-            },
-          })";
-        };
+        # this is shitty D:
+        # rainbow-delimiters = {
+        #   package = pkgs.vimPlugins.rainbow-delimiters-nvim;
+        #   #   setup = "require('rainbow-delimiters.setup').setup {
+        #   #     priority = {
+        #   #       [''] = 110,
+        #   #     },
+        #   #   }";
+        #   # };
+        # };
       };
 
       extraLuaFiles = [
         ./yankhighlight.lua
+        ./togglediagnostics.lua
       ];
+
+      extraPlugins = {
+        rainbow-delimiters = {
+          package = pkgs.vimUtils.buildVimPlugin {
+            pname = "rainbow-delimiters";
+            version = "0.9.1";
+            src = pkgs.fetchFromGitHub {
+              owner = "HiPhish";
+              repo = "rainbow-delimiters.nvim";
+              rev = "49372aadaaf04d14a50efaa34150c51d5a8047e1";
+              hash = "sha256-qvYpFcqLJ/DCdgGUaeaEOna9J9Rcsnj98OQr1ioINiI=";
+            };
+            nvimSkipModules = [
+              # rainbow-delimiters.types.lua
+              "rainbow-delimiters.types"
+              # Test that requires an unpackaged dependency
+              "rainbow-delimiters._test.highlight"
+            ];
+          };
+        };
+      };
     };
   };
 }

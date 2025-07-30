@@ -58,10 +58,14 @@ mod: {
 
   "${mod}+r" = "mode resize";
 
-  # media keys
-  "XF86AudioRaiseVolume" = "exec pactl set-sink-volume 0 +5%";
-  "XF86AudioLowerVolume" = "exec pactl set-sink-volume 0 -5%";
-  "XF86AudioMute" = "exec pactl set-sink-mute 0 toggle";
+  # idk why i use fucking pamixer it was just a stinky fix for pipewire idk
+  "XF86AudioRaiseVolume" = "exec pamixer --increase 5";
+  "XF86AudioLowerVolume" = "exec pamixer --decrease 5";
+  "XF86AudioMute" = "exec pamixer --toggle-mute";
+
+  # brightness shit
+  "XF86MonBrightnessUp" = "exec brightnessctl set +10%";
+  "XF86MonBrightnessDown" = "exec brightnessctl set 10-%";
 
   # screenshot keybinds
   "${mod}+Shift+s" = "exec --no-startup-id maim --select | xclip -selection clipboard -t image/png";

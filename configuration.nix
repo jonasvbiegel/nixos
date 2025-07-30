@@ -56,9 +56,22 @@
   # Configure console keymap
   console.keyMap = "dk-latin1";
 
-  #pulse audio
-  services.pipewire.enable = false;
-  services.pulseaudio.enable = true;
+  #audio
+
+  services.pipewire = {
+    enable = true;
+    pulse.enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+  };
+
+  services.mullvad-vpn.enable = true;
+
+  #bluetooth
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+  };
 
   #xserver
   services.xserver.enable = true;
@@ -70,7 +83,7 @@
   users.users.jonas = {
     isNormalUser = true;
     description = "jonas";
-    extraGroups = ["networkmanager" "wheel" "audio" "video"];
+    extraGroups = ["networkmanager" "wheel"];
     shell = pkgs.zsh;
     packages = with pkgs; [];
   };

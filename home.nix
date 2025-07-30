@@ -32,11 +32,14 @@
       maim
       xclip
       btop
-      acpilight
       zathura
       zip
       unzip
       feh
+      bluetui
+      pamixer
+      mullvad
+      brightnessctl
     ];
   };
 
@@ -46,11 +49,13 @@
       userName = "Jonas Vittrup Biegel";
       userEmail = "10519146@ucn.dk";
     };
-
     gh.enable = true;
 
     librewolf = {
       enable = true;
+      settings = {
+        "signons.rememberSignons" = true;
+      };
     };
 
     kitty = {

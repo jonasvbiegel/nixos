@@ -30,7 +30,7 @@ in {
           notification = false;
         }
         {
-          command = "${pkgs.feh}/bin/feh --bg-scale ~/flake/modules/wallpapers/wallpaper10.jpg";
+          command = "${pkgs.feh}/bin/feh --bg-scale ~/flake/modules/i3/wallpapers/wallpaper10.jpg";
           always = true;
           notification = false;
         }
