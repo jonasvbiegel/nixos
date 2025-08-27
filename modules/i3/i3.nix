@@ -59,12 +59,12 @@ in {
     theme = "~/flake/modules/i3/rounded-gray-dark.rasi/";
   };
 
-  services.picom = {
-    enable = true;
-    fade = false;
-    shadow = false;
-    settings = {
-      backend = "glx";
-    };
-  };
+  # services.picom = {
+  #   enable = true;
+  #   fade = false;
+  #   shadow = false;
+  #   settings = {
+  #     backend = "glx";
+  #   };
+  # };
 }

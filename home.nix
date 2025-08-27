@@ -40,6 +40,7 @@
       pamixer
       mullvad
       brightnessctl
+      steam
     ];
   };
 
@@ -55,6 +56,7 @@
       enable = true;
       settings = {
         "signons.rememberSignons" = true;
+        "privary.clearOnShutdown.cookies" = false;
       };
     };
 
@@ -63,10 +65,10 @@
       themeFile = "OneDark-Pro";
       shellIntegration.enableZshIntegration = true;
       font = {
-        # package = pkgs.nerd-fonts.fira-code;
-        # name = "FiraCode Nerd Font Mono";
-        package = pkgs.nerd-fonts.code-new-roman;
-        name = "CodeNewRoman Nerd Font Mono";
+        package = pkgs.nerd-fonts.fira-code;
+        name = "FiraCode Nerd Font Mono";
+        # package = pkgs.nerd-fonts.code-new-roman;
+        # name = "CodeNewRoman Nerd Font Mono";
         size = 18;
       };
       settings = {

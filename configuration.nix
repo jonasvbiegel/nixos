@@ -73,6 +73,20 @@
     powerOnBoot = true;
   };
 
+  #battery thing
+  services.power-profiles-daemon.enable = true;
+
+  hardware = {
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+    };
+    amdgpu.amdvlk = {
+      enable = true;
+      support32Bit.enable = true;
+    };
+  };
+
   #xserver
   services.xserver.enable = true;
   services.xserver.windowManager.i3.enable = true;
