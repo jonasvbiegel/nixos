@@ -41,6 +41,7 @@
       mullvad
       brightnessctl
       steam
+      teams
     ];
   };
 
