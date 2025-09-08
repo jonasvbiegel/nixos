@@ -4,7 +4,7 @@
   lib,
   ...
 }: {
-  home.packages = [pkgs.nerd-fonts.fira-code];
+  home.packages = [pkgs.monaspace];
 
   services.polybar = {
     # this makes pulseaudio work
@@ -19,15 +19,15 @@
 
         background = "#AA000000";
 
-        module-margin = 1;
+        module-margin = 2;
 
-        padding-right = 1;
+        padding-right = 2;
 
         separator = "|";
 
-        font-0 = "FiraCode Nerd Font Mono:size=16;2";
-        font-1 = "FiraCode Nerd Font Mono:size=40:weight=bold;2";
-        font-2 = "FiraCode Nerd Font Mono:size=40:weight=bold;2";
+        font-0 = "Monaspace Argon Mono:size=16;2";
+        font-1 = "Monaspace Argon Mono:size=40:weight=bold;2";
+        font-2 = "Monaspace Argon Mono:size=40:weight=bold;2";
 
         modules-left = "xworkspaces";
         modules-center = "time";
@@ -44,12 +44,12 @@
 
         label-active = "%name%";
         label-active-foreground = "#FFFFFFFF";
-        label-active-padding = 1;
+        label-active-padding = 2;
 
         label-occupied = "%name%";
         label-occupied-foreground = "#FF888888";
         label-occupied-font = "#FF888888";
-        label-occupied-padding = 1;
+        label-occupied-padding = 2;
 
         label-empty = "%name%";
         label-empty-foreground = "#FF888888";

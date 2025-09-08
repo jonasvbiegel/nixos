@@ -30,7 +30,7 @@ in {
           notification = false;
         }
         {
-          command = "${pkgs.feh}/bin/feh --bg-scale ~/flake/modules/i3/wallpapers/wallpaper10.jpg";
+          command = "${pkgs.feh}/bin/feh --bg-scale ~/flake/modules/i3/wallpapers/tokyonight.png";
           always = true;
           notification = false;
         }
@@ -59,12 +59,12 @@ in {
     theme = "~/flake/modules/i3/rounded-gray-dark.rasi/";
   };
 
-  # services.picom = {
-  #   enable = true;
-  #   fade = false;
-  #   shadow = false;
-  #   settings = {
-  #     backend = "glx";
-  #   };
-  # };
+  services.picom = {
+    enable = true;
+    fade = false;
+    shadow = false;
+    settings = {
+      backend = "glx";
+    };
+  };
 }

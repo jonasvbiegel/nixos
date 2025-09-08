@@ -28,6 +28,7 @@
         pairs.enable = true;
         surround.enable = true;
         files.enable = true;
+        colors.enable = true;
       };
 
       statusline.lualine = {
@@ -164,6 +165,7 @@
             cursorline.timeout = 4;
           };
         };
+        # rainbow-delimiters.enable = true;
         indent-blankline.enable = true;
         nvim-web-devicons.enable = true;
       };
@@ -178,10 +180,8 @@
 
       theme = {
         enable = true;
-        # name = "oxocarbon";
-        # style = "dark";
-        # name = "onedark";
-        # style = "warmer";
+        name = "tokyonight";
+        style = "night";
         transparent = true;
       };
 
@@ -213,6 +213,7 @@
         };
         rust = {
           enable = true;
+          treesitter.enable = true;
         };
         markdown = {
           enable = true;
@@ -247,6 +248,9 @@
           package = pkgs.vimPlugins.no-neck-pain-nvim;
           setup = "require('no-neck-pain').setup {}";
         };
+        gruvbox-material = {
+          package = pkgs.vimPlugins.gruvbox-material;
+        };
         # this is shitty D:
         # rainbow-delimiters = {
         #   package = pkgs.vimPlugins.rainbow-delimiters-nvim;
@@ -272,8 +276,9 @@
             src = pkgs.fetchFromGitHub {
               owner = "HiPhish";
               repo = "rainbow-delimiters.nvim";
-              rev = "49372aadaaf04d14a50efaa34150c51d5a8047e1";
-              hash = "sha256-qvYpFcqLJ/DCdgGUaeaEOna9J9Rcsnj98OQr1ioINiI=";
+              # rev = "49372aadaaf04d14a50efaa34150c51d5a8047e1";
+              rev = "687ef75fdbd497eabc9eea92b52e7b4d403b3319";
+              hash = "sha256-4zpjuu0yvA86bBANww3LAlXUczsSyQ4MGamjBWd3FZM";
             };
             nvimSkipModules = [
               # rainbow-delimiters.types.lua
