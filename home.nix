@@ -77,8 +77,12 @@
         window_padding_width = 4;
         modify_font = "cell_height 1px";
         font_features = "MonaspaceArgon-Regular +ss01 +ss02 +ss03 +ss07 +ss08 +ss09";
+        italic_font = "postscript_name=MonaspaceRadon-Regular";
       };
-
+      extraConfig = "
+        modify_font underline_position 5
+        modify_font underline_thickness 300%
+      ";
       # extraConfig = "
       #     foreground #979eab
       #     background #161616

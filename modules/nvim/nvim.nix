@@ -31,6 +31,29 @@
         colors.enable = true;
       };
 
+      tabline.nvimBufferline = {
+        enable = true;
+        mappings = {
+          closeCurrent = "<C-->";
+          cycleNext = "<C-.>";
+          cyclePrevious = "<C-,>";
+        };
+        setupOpts = {
+          options = {
+            buffer_close_icon = "";
+            close_icon = "";
+            diagnostics = false;
+            hover.enabled = false;
+            numbers = "none";
+            style_preset = "no_italic";
+            separator_style = null;
+            indicator_style = "none";
+            left_trunc_marker = "";
+            right_trunc_marker = "";
+          };
+        };
+      };
+
       statusline.lualine = {
         enable = true;
         refresh.statusline = 50;
@@ -53,12 +76,12 @@
           silent = true;
           action = "<cmd>FzfLua files<CR>";
         }
-        {
-          key = "<C-,>";
-          mode = "n";
-          silent = true;
-          action = "<cmd>FzfLua buffers<CR>";
-        }
+        # {
+        #   key = "<C-,>";
+        #   mode = "n";
+        #   silent = true;
+        #   action = "<cmd>FzfLua buffers<CR>";
+        # }
         # make c d and c u do zz after to center
         {
           key = "<C-d>";
@@ -246,7 +269,16 @@
         };
         no-neck-pain = {
           package = pkgs.vimPlugins.no-neck-pain-nvim;
-          setup = "require('no-neck-pain').setup {}";
+          setup = "require('no-neck-pain').setup ({
+            buffers = {
+              colors = {
+                blend = -0.3,
+              },
+              wo = {
+                fillchars = 'eob: ',
+              },
+            },
+          })";
         };
         gruvbox-material = {
           package = pkgs.vimPlugins.gruvbox-material;
