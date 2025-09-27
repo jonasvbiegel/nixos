@@ -5,9 +5,6 @@
   ...
 }: {
   imports = [
-    # ./modules/nvim.nix
-    # ./modules/i3.nix
-    # ./modules/polybar.nix
     ./modules/nvim/nvim.nix
     ./modules/i3/i3.nix
     ./modules/i3/polybar.nix
@@ -40,8 +37,13 @@
       pamixer
       mullvad
       brightnessctl
-      # steam
+      steam
       teams-for-linux
+      bolt-launcher
+      runelite
+
+      # dont know how to do this down in kitty, so its up here
+      maple-mono.NF
     ];
   };
 
@@ -58,6 +60,7 @@
       settings = {
         "signons.rememberSignons" = true;
         "privary.clearOnShutdown.cookies" = false;
+        "full-screen-api.ignore-widgets" = true;
       };
     };
 
@@ -66,18 +69,16 @@
       themeFile = "tokyo_night_night";
       shellIntegration.enableZshIntegration = true;
       font = {
-        # package = pkgs.nerd-fonts.fira-code;
-        # name = "FiraCode Nerd Font Mono";
-        package = pkgs.monaspace;
-        name = "Monaspace Argon";
+        package = pkgs.nerd-fonts.fira-code;
+        name = "FiraCode Nerd Font Mono";
         size = 18;
       };
       settings = {
         background_opacity = "0.90";
         window_padding_width = 4;
         modify_font = "cell_height 1px";
-        font_features = "MonaspaceArgon-Regular +ss01 +ss02 +ss03 +ss07 +ss08 +ss09";
-        italic_font = "postscript_name=MonaspaceRadon-Regular";
+        # italic_font = "postscript_name=VictorMonoNF-SemiBoldItalic";
+        italic_font = "postscript_name=MapleMono-NF-Italic";
       };
       extraConfig = "
         modify_font underline_position 5

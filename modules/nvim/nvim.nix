@@ -256,6 +256,9 @@
         };
         typst = {
           enable = true;
+          extensions = {
+            typst-preview-nvim.enable = true;
+          };
         };
         clang = {
           enable = true;
@@ -271,9 +274,6 @@
           package = pkgs.vimPlugins.no-neck-pain-nvim;
           setup = "require('no-neck-pain').setup ({
             buffers = {
-              colors = {
-                blend = -0.3,
-              },
               wo = {
                 fillchars = 'eob: ',
               },
@@ -283,16 +283,6 @@
         gruvbox-material = {
           package = pkgs.vimPlugins.gruvbox-material;
         };
-        # this is shitty D:
-        # rainbow-delimiters = {
-        #   package = pkgs.vimPlugins.rainbow-delimiters-nvim;
-        #   #   setup = "require('rainbow-delimiters.setup').setup {
-        #   #     priority = {
-        #   #       [''] = 110,
-        #   #     },
-        #   #   }";
-        #   # };
-        # };
       };
 
       extraLuaFiles = [

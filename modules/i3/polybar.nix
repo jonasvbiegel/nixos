@@ -4,7 +4,7 @@
   lib,
   ...
 }: {
-  home.packages = [pkgs.monaspace];
+  home.packages = [pkgs.nerd-fonts.fira-mono];
 
   services.polybar = {
     # this makes pulseaudio work
@@ -25,9 +25,9 @@
 
         separator = "|";
 
-        font-0 = "Monaspace Argon:size=16;2";
-        font-1 = "Monaspace Argon:size=40:weight=bold;2";
-        font-2 = "Monaspace Argon:size=40:weight=bold;2";
+        font-0 = "FiraMono Nerd Font:size=16;2";
+        font-1 = "FiraMono Nerd Font:size=40:weight=bold;2";
+        font-2 = "FiraMono Nerd Font:size=40:weight=bold;2";
 
         modules-left = "xworkspaces";
         modules-center = "time";
