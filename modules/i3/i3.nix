@@ -13,8 +13,8 @@ in {
       terminal = "kitty";
       bars = [];
       gaps = {
-        inner = 10;
-        outer = 5;
+        inner = 5;
+        outer = 3;
         smartBorders = "on";
       };
       defaultWorkspace = "workspace number 1";
@@ -37,18 +37,27 @@ in {
       ];
       colors = {
         focused = {
-          background = "#5c5c5c";
-          border = "#5c5c5c";
-          childBorder = "#5c5c5c";
-          indicator = "#5c5c5c";
-          text = "#5c5c5c";
+          background = "#0076ad";
+          border = "#0076ad";
+          childBorder = "#0076ad";
+          indicator = "#0076ad";
+          text = "#0076ad";
         };
+
+        focusedInactive = {
+          background = "#00364f";
+          border = "#00364f";
+          childBorder = "#00364f";
+          indicator = "#00364f";
+          text = "#00364f";
+        };
+
         unfocused = {
-          background = "#292929";
-          border = "#292929";
-          childBorder = "#292929";
-          indicator = "#292929";
-          text = "#292929";
+          background = "#00364f";
+          border = "#00364f";
+          childBorder = "#00364f";
+          indicator = "#00364f";
+          text = "#00364f";
         };
       };
     };
@@ -59,12 +68,12 @@ in {
     theme = "~/flake/modules/i3/rounded-gray-dark.rasi/";
   };
 
-  # services.picom = {
-  #   enable = true;
-  #   fade = false;
-  #   shadow = false;
-  #   settings = {
-  #     backend = "glx";
-  #   };
-  # };
+  services.picom = {
+    enable = true;
+    fade = false;
+    shadow = false;
+    settings = {
+      backend = "glx";
+    };
+  };
 }

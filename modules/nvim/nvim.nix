@@ -109,7 +109,7 @@
           silent = true;
           action = "<cmd>lua vim.lsp.buf.code_action()<CR>";
         }
-        # make gd and gD to use lsp
+        # make gd and gD use lsp
         {
           key = "gd";
           mode = "n";
@@ -123,7 +123,7 @@
           action = "<cmd>lua vim.lsp.buf.declaration()<CR>";
         }
         {
-          key = "<C-æ>";
+          key = "<leader>æ";
           mode = "n";
           silent = true;
           action = "<cmd>lua MiniFiles.open()<CR>";
@@ -134,18 +134,20 @@
           silent = true;
           action = "<cmd>NoNeckPain<CR>";
         }
-        {
-          key = "<C-h>";
-          mode = "n";
-          silent = true;
-          action = "<cmd>wincmd h<CR>";
-        }
-        {
-          key = "<C-l>";
-          mode = "n";
-          silent = true;
-          action = "<cmd>wincmd l<CR>";
-        }
+        # move buffer
+        # {
+        #   key = "<C-h>";
+        #   mode = "n";
+        #   silent = true;
+        #   action = "<cmd>wincmd h<CR>";
+        # }
+        # {
+        #   key = "<C-l>";
+        #   mode = "n";
+        #   silent = true;
+        #   action = "<cmd>wincmd l<CR>";
+        # }
+        # toggle diagnostics
         {
           key = "<leader>d";
           mode = "n";
@@ -160,6 +162,27 @@
             end
             ";
           lua = true;
+        }
+        # open snacks terminal
+        {
+          key = "<leader>w";
+          mode = "n";
+          silent = true;
+          action = "<cmd>lua Snacks.terminal.toggle()<CR>";
+        }
+
+        # snippet next and prev
+        {
+          key = "<C-l>";
+          mode = "i";
+          silent = true;
+          action = "<cmd>lua vim.snippet.jump(1)<CR>";
+        }
+        {
+          key = "<C-h>";
+          mode = "i";
+          silent = true;
+          action = "<cmd>lua vim.snippet.jump(-1)<CR>";
         }
       ];
 
@@ -193,6 +216,16 @@
         nvim-web-devicons.enable = true;
       };
 
+      utility = {
+        snacks-nvim = {
+          enable = true;
+          setupOpts = {
+            terminal.enable = true;
+            explorer.enable = true;
+          };
+        };
+      };
+
       autocomplete.nvim-cmp = {
         enable = true;
         mappings = {
@@ -204,7 +237,8 @@
       theme = {
         enable = true;
         name = "tokyonight";
-        style = "night";
+        # style = "night";
+        style = "moon";
         transparent = true;
       };
 
@@ -256,9 +290,6 @@
         };
         typst = {
           enable = true;
-          extensions = {
-            typst-preview-nvim.enable = true;
-          };
         };
         clang = {
           enable = true;
@@ -279,9 +310,6 @@
               },
             },
           })";
-        };
-        gruvbox-material = {
-          package = pkgs.vimPlugins.gruvbox-material;
         };
       };
 

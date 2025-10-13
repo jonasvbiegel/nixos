@@ -65,7 +65,11 @@
     alsa.support32Bit = true;
   };
 
+  # mullvad
   services.mullvad-vpn.enable = true;
+
+  # unclutter - hide cursor
+  services.unclutter.enable = true;
 
   #bluetooth
   hardware.bluetooth = {
@@ -81,15 +85,17 @@
       enable = true;
       enable32Bit = true;
     };
-    amdgpu.amdvlk = {
-      enable = true;
-      support32Bit.enable = true;
-    };
+    # amdgpu.amdvlk = {
+    #   enable = true;
+    #   support32Bit.enable = true;
+    # };
   };
 
   #xserver
   services.xserver.enable = true;
   services.xserver.windowManager.i3.enable = true;
+
+  programs.hyprland.enable = true;
 
   programs.zsh.enable = true;
 
@@ -115,6 +121,13 @@
     git
     wget
   ];
+
+  # this is for running xremap without sudo
+  hardware.uinput.enable = true;
+  boot.kernelModules = ["uinput"];
+  services.udev.extraRules = ''
+    KERNEL=="uinput", GROUP="input", TAG+="uaccess"
+  '';
 
   # turn on automatic garbage collection
   nix = {
