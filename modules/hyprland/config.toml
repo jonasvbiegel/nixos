@@ -14,7 +14,7 @@ version = "1.1.16"
 # {icon}, {client}
 # workspace formatter
 # workspace = "{id}:{delim}{clients}" # {id}, {delim} and {clients} are supported
-workspace = "<b>{id}</b> {clients}"
+workspace = "<b>{id}</b>  {clients}"
 # workspace_empty = "{id}" # {id}, {delim} and {clients} are supported
 workspace_empty = "<b>{id}</b>"
 # client formatter
@@ -40,6 +40,7 @@ workspace_empty = "<b>{id}</b>"
 "[Ll]ibrewolf" = " "
 "discord" = " "
 "teams-for-linux" = "󰊻 "
+"zathura" = " "
 
 # [class_active]
 # DEFAULT = "{class}"
@@ -48,7 +49,9 @@ workspace_empty = "<b>{id}</b>"
 [initial_class]
 "DEFAULT" = "󰘔 "
 "(?i)Kitty" = " "
+"[Ll]ibrewolf" = " "
 "teams-for-linux" = "󰊻 "
+"zathura" = " "
 
 [initial_class_active]
 DEFAULT = "󰘔 "
@@ -56,6 +59,19 @@ DEFAULT = "󰘔 "
 "[Ll]ibrewolf" = " "
 "discord" = " "
 "teams-for-linux" = "󰊻 "
+"zathura" = " "
+
+[title_in_class."(?i)kitty"]
+"(?i)spotify" = " "
+
+[title_in_class_active."(?i)kitty"]
+"(?i)spotify" = " "
+
+[title_in_initial_class."(?i)kitty"]
+"(?i)spotify" = " "
+
+[title_in_initial_class_active."(?i)kitty"]
+"(?i)spotify" = " "
 
 # [title_in_class."(?i)kitty"]
 # "(?i)neomutt" = "neomutt"

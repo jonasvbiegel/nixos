@@ -40,7 +40,7 @@
       teams-for-linux
       bolt-launcher
       runelite
-      xremap
+      libnotify
 
       # dont know how to do this down in kitty, so its up here
       maple-mono.NF
@@ -104,6 +104,7 @@
         gch = "git checkout";
         gst = "git status";
         clone = "(kitty 2> /dev/null &)";
+        spotify = "spotify_player";
       };
     };
 
@@ -115,6 +116,9 @@
     zathura = {
       enable = true;
       extraConfig = "
+        set selection-clipboard clipboard
+        set guioptions none
+
         # Tokyo Night color scheme for Zathura.
         # Original color scheme: https://github.com/enkia/tokyo-night-vscode-theme
         # Provided for Zathura by https://github.com/CondensedMilk7
@@ -168,9 +172,40 @@
       };
     };
 
+    spotify-player = {
+      enable = true;
+    };
+
     direnv = {
       enable = true;
       enableZshIntegration = true;
+    };
+  };
+
+  services = {
+    systembus-notify.enable = true;
+    dunst = {
+      enable = true;
+      iconTheme = {
+        name = "Adwaita";
+        package = pkgs.adwaita-icon-theme;
+        # size = "32x32";
+        size = "64x64";
+      };
+      settings = {
+        global = {
+          timeout = 10;
+          font = "Liga SFMono Nerd Font 14";
+          width = 350;
+          height = 100;
+          offset = "20x18";
+
+          frame_color = "#343544";
+          background = "#2b2c3d";
+          foreground = "#c8d3f5";
+          corner_radius = 15;
+        };
+      };
     };
   };
 

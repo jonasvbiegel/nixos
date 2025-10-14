@@ -1,4 +1,8 @@
 {pkgs, ...}: {
+  imports = [
+    ./hyprland-keybindings.nix
+  ];
+
   programs.wofi = {
     enable = true;
   };
@@ -20,13 +24,8 @@
 
         border_size = 3;
 
-        # col = {
-        #   active_border = "#c8d3f5";
-        #   inactive_border = "#636da6";
-        # };
-
         "col.active_border " = "0xffc8d3f5";
-        "col.inactive_border " = "0xff636da6";
+        "col.inactive_border " = "0xff454656";
       };
 
       decoration = {
@@ -35,6 +34,29 @@
 
         blur.enabled = false;
         shadow.enabled = false;
+      };
+
+      animations = {
+        bezier = [
+          "quick,0.15,0,0.1,1"
+          "easeOutQuint,0.23,1,0.32,1"
+          "linear,0,0,1,1"
+        ];
+
+        animation = [
+          "border,1, 3, easeOutQuint"
+
+          "workspaces,1, 1.94, quick, slide"
+          "workspacesIn,1, 1.94, quick, slide"
+          "workspacesOut,1, 1.94, quick, slide"
+
+          "windows,1,3,easeOutQuint"
+          "windowsIn,1,4.1,easeOutQuint,popin 87%"
+          "windowsOut,1,1.49,linear, popin 87%"
+
+          "fadeIn,1,1,linear"
+          "fadeOut,1,1,linear"
+        ];
       };
 
       misc = {
@@ -52,9 +74,6 @@
       "$term" = "kitty";
       "$menu" = "wofi --show drun";
 
-      # binds
-      bind = import ./hyprland-keybindings.nix;
-
       # input
       input = {
         "kb_layout" = "dk";
@@ -71,6 +90,8 @@
       exec = [
         "pkill waybar"
         "waybar &"
+        "pkill -f hyprland-autoname-workspaces"
+        "hyprland-autoname-workspaces -c ~/flake/modules/hyprland/config.toml &"
       ];
     };
   };
@@ -79,28 +100,63 @@
     enable = true;
     settings = {
       mainBar = {
-        name = "bar";
         layer = "top";
         position = "top";
-        height = 30;
-        margin-top = 8;
-        margin-bottom = 8;
+        margin-top = 7;
         output = "eDP-1";
-        modules-left = ["hyprland/workspaces"];
-        modules-center = ["sway/window"];
-        modules-right = ["battery" "clock"];
-      };
+        modules-left = ["custom/nix" "hyprland/workspaces"];
+        modules-right = ["group/info" "clock"];
 
-      clock = {
-        format = "%H:%M";
+        "group/info" = {
+          orientation = "horizontal";
+          modules = ["network" "pulseaudio" "battery"];
+        };
+
+        clock = {
+          interval = 1;
+          format = "{:%a %d. %b %H:%M}";
+        };
+
+        network = {
+          format = "";
+          format-wifi = "<span size='18pt' rise='-2pt' color='#ff757f'>󰖩</span>  {essid}";
+          format-disconnected = "<span size='18pt' rise='-2pt'>󰖪</span>";
+        };
+
+        battery = {
+          format = "<span size='18pt' rise='-2pt' color='#c3e88d'>{icon}</span> {capacity}%";
+          format-icons = {
+            discharging = ["󰁻" "󰁽" "󰁿" "󰂁" "󰁹"];
+            charging = ["󰂆" "󰂈" "󰂉" "󰂊" "󰂅"];
+          };
+
+          interval = 60;
+          states = {
+            warning = 30;
+            critical = 15;
+          };
+          tooltip = true;
+          tooltip-format-charging = "{capacity}% | full in {time}";
+          tooltip-format-discharging = "{capacity}% | empty in {time}";
+        };
+
+        pulseaudio = {
+          format = "{icon} {volume}%";
+          tooltip = true;
+          tooltip-format = "volume: {volume}%";
+          format-icons = {
+            default = "<span size='18pt' rise='-2pt' color='#ffc777'> </span>";
+            default-muted = "<span size='16pt' rise='-1pt' color='#ffc777'> </span>";
+          };
+        };
+
+        "custom/nix" = {
+          format = "<span size='28pt'></span>";
+        };
       };
 
       "hyprland/workspaces" = {
         format = "{name}";
-      };
-
-      battery = {
-        format = "{capacity}";
       };
     };
     # colors
@@ -110,26 +166,61 @@
       * {
         font-family: Liga SFMono Nerd Font;
         font-size: 20px;
+        font-weight: 600;
       }
 
       window#waybar {
         background-color: #222436;
         color: #c8d3f5;
+        border-bottom: 3px solid #454656;
+      }
+
+      #clock {
+        margin: 0px 10px;
+        margin-bottom: 13px;
+        color: #c8d3f5;
+      }
+
+      #custom-nix {
+        margin: 0px 24px;
+        margin-top: -14px;
+        color: #86e1fc;
+      }
+
+      #battery {
+        margin-right: 6px;
+      }
+
+      #network, #pulseaudio {
+        margin-right: 30px;
+      }
+
+      #info {
+        background-color: #2b2c3d;
+        color: #c8d3f5;
+        border: 3px solid #343544;
+        border-radius: 15px;
+        padding: 3px 12px 3px 12px;
+        margin: 0px 10px;
+        margin-bottom: 13px;
+      }
+
+      #workspaces {
+        margin-bottom: 13px;
       }
 
       #workspaces button {
-        background-color: #222436;
-        color: #c8d3f5;
-        border: 3px solid #c8d3f5;
-        border-radius: 8px;
-        /* opacity: 0.6; */
-
-        padding: 5px 18px 5px 10px;
+        background-color: #2b2c3d;
+        color: #b4bedc;
+        border: 3px solid #343544;
+        border-radius: 15px;
+        padding: 3px 20px 3px 12px;
         margin: 0px 10px;
       }
 
       #workspaces button.active {
-        opacity: 1.0;
+        border: 3px solid #c099ff;
+        color: #c8d3f5;
       }
     '';
   };
