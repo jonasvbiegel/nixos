@@ -46,8 +46,8 @@
             hover.enabled = false;
             numbers = "none";
             style_preset = "no_italic";
-            separator_style = null;
-            indicator_style = "none";
+            separator_style = [" " " "];
+            indicator.style = "none";
             left_trunc_marker = "";
             right_trunc_marker = "";
           };
@@ -69,19 +69,21 @@
           silent = true;
           action = "<leader>";
         }
-        # set ctrl p to open fzf lua files and leader r to open fzf lua buffers
+        # ctrl p to open snacks files
         {
           key = "<C-p>";
           mode = "n";
           silent = true;
-          action = "<cmd>FzfLua files<CR>";
+          # action = "<cmd>FzfLua files<CR>";
+          action = "<cmd>lua Snacks.picker.files()<CR>";
         }
-        # {
-        #   key = "<C-,>";
-        #   mode = "n";
-        #   silent = true;
-        #   action = "<cmd>FzfLua buffers<CR>";
-        # }
+        # leader f to open lsp symbols
+        {
+          key = "<leader>f";
+          mode = "n";
+          silent = true;
+          action = "<cmd>lua Snacks.picker.lsp_symbols()<CR>";
+        }
         # make c d and c u do zz after to center
         {
           key = "<C-d>";
@@ -211,7 +213,7 @@
             cursorline.timeout = 4;
           };
         };
-        # rainbow-delimiters.enable = true;
+        rainbow-delimiters.enable = true;
         indent-blankline.enable = true;
         nvim-web-devicons.enable = true;
       };
@@ -222,6 +224,7 @@
           setupOpts = {
             terminal.enable = true;
             explorer.enable = true;
+            picker.enable = true;
           };
         };
       };
@@ -237,9 +240,7 @@
       theme = {
         enable = true;
         name = "tokyonight";
-        # style = "night";
-        style = "moon";
-        transparent = true;
+        style = "night";
       };
 
       treesitter = {
@@ -274,7 +275,6 @@
         };
         markdown = {
           enable = true;
-          format.package = pkgs.deno;
           extensions.render-markdown-nvim = {
             enable = true;
           };
@@ -292,6 +292,15 @@
           enable = true;
         };
         clang = {
+          enable = true;
+        };
+        svelte = {
+          enable = true;
+        };
+        haskell = {
+          enable = true;
+        };
+        python = {
           enable = true;
         };
       };
@@ -319,25 +328,24 @@
       ];
 
       extraPlugins = {
-        rainbow-delimiters = {
-          package = pkgs.vimUtils.buildVimPlugin {
-            pname = "rainbow-delimiters";
-            version = "0.9.1";
-            src = pkgs.fetchFromGitHub {
-              owner = "HiPhish";
-              repo = "rainbow-delimiters.nvim";
-              # rev = "49372aadaaf04d14a50efaa34150c51d5a8047e1";
-              rev = "687ef75fdbd497eabc9eea92b52e7b4d403b3319";
-              hash = "sha256-4zpjuu0yvA86bBANww3LAlXUczsSyQ4MGamjBWd3FZM";
-            };
-            nvimSkipModules = [
-              # rainbow-delimiters.types.lua
-              "rainbow-delimiters.types"
-              # Test that requires an unpackaged dependency
-              "rainbow-delimiters._test.highlight"
-            ];
-          };
-        };
+        # rainbow-delimiters = {
+        #   package = pkgs.vimUtils.buildVimPlugin {
+        #     pname = "rainbow-delimiters";
+        #     version = "0.9.1";
+        #     src = pkgs.fetchFromGitHub {
+        #       owner = "HiPhish";
+        #       repo = "rainbow-delimiters.nvim";
+        #       rev = "8aafe2cbd89cd4090f573a98cab6b20366576fde";
+        #       hash = "sha256-4zpjuu0yvA86bBANww3LAlXUczsSyQ4MGamjBWd3FZM";
+        #     };
+        #     nvimSkipModules = [
+        #       # rainbow-delimiters.types.lua
+        #       "rainbow-delimiters.types"
+        #       # Test that requires an unpackaged dependency
+        #       "rainbow-delimiters._test.highlight"
+        #     ];
+        #   };
+        # };
       };
     };
   };

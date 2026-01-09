@@ -7,7 +7,7 @@
     enable = true;
   };
 
-  home.packages = with pkgs; [wl-clipboard hyprland-autoname-workspaces];
+  home.packages = with pkgs; [wl-clipboard];
 
   wayland.windowManager.hyprland = {
     enable = true;
@@ -24,8 +24,8 @@
 
         border_size = 3;
 
-        "col.active_border " = "0xffc8d3f5";
-        "col.inactive_border " = "0xff454656";
+        "col.active_border " = "0xffc0caf5";
+        "col.inactive_border " = "0xff636da6";
       };
 
       decoration = {
@@ -62,7 +62,7 @@
       misc = {
         disable_hyprland_logo = true;
         disable_splash_rendering = true;
-        background_color = "0x222436";
+        background_color = "0x1a1b26";
       };
 
       dwindle = {
@@ -86,13 +86,21 @@
         "HYPRCURSOR_SIZE,36"
       ];
 
-      # exec
-      exec = [
-        "pkill waybar"
+      cursor = {
+        no_warps = true;
+        hide_on_key_press = true;
+      };
+
+      # exec-once
+      exec-once = [
         "waybar &"
-        "pkill -f hyprland-autoname-workspaces"
-        "hyprland-autoname-workspaces -c ~/flake/modules/hyprland/config.toml &"
       ];
+
+      # exec
+      # exec = [
+      #   "pkill waybar"
+      #   "waybar &"
+      # ];
     };
   };
 
@@ -105,11 +113,16 @@
         margin-top = 7;
         output = "eDP-1";
         modules-left = ["custom/nix" "hyprland/workspaces"];
-        modules-right = ["group/info" "clock"];
+        modules-right = ["tray" "group/info" "clock"];
 
         "group/info" = {
           orientation = "horizontal";
           modules = ["network" "pulseaudio" "battery"];
+        };
+
+        tray = {
+          icon-size = 24;
+          spacing = 10;
         };
 
         clock = {
@@ -119,22 +132,31 @@
 
         network = {
           format = "";
-          format-wifi = "<span size='18pt' rise='-2pt' color='#ff757f'>󰖩</span>  {essid}";
-          format-disconnected = "<span size='18pt' rise='-2pt'>󰖪</span>";
+          format-wifi = "<span size='18pt' rise='-2pt' color='#f7768e'>󰖩</span>  {essid}";
+          format-disconnected = "<span size='18pt' rise='-2pt' color='#f7768e'>󰖪</span>  disconnected";
+
+          max-length = 20;
+
+          tooltip = true;
+          tooltip-format-wifi = "󰤯 {signalStrength}%\n󰇚 {bandwidthDownBytes}\n󰕒 {bandwidthUpBytes}";
         };
 
         battery = {
-          format = "<span size='18pt' rise='-2pt' color='#c3e88d'>{icon}</span> {capacity}%";
+          format = "<span size='18pt' rise='-2pt' color='#9ece6a'>{icon}</span> {capacity}%";
           format-icons = {
-            discharging = ["󰁻" "󰁽" "󰁿" "󰂁" "󰁹"];
+            discharging = ["󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
             charging = ["󰂆" "󰂈" "󰂉" "󰂊" "󰂅"];
           };
 
           interval = 60;
+          full-at = 98;
+
           states = {
-            warning = 30;
-            critical = 15;
+            warning = 10;
           };
+
+          format-warning = "<span size='18pt' rise='-2pt' color='#f7768e'>󰂃</span> {capacity}%";
+
           tooltip = true;
           tooltip-format-charging = "{capacity}% | full in {time}";
           tooltip-format-discharging = "{capacity}% | empty in {time}";
@@ -142,25 +164,39 @@
 
         pulseaudio = {
           format = "{icon} {volume}%";
+          format-bluetooth = "󰂯 {volume}%";
           tooltip = true;
           tooltip-format = "volume: {volume}%";
           format-icons = {
-            default = "<span size='18pt' rise='-2pt' color='#ffc777'> </span>";
-            default-muted = "<span size='16pt' rise='-1pt' color='#ffc777'> </span>";
+            default = "<span size='18pt' rise='-2pt' color='#e0af68'> </span>";
+            default-muted = "<span size='16pt' rise='-1pt' color='#e0af68'> </span>";
           };
         };
 
         "custom/nix" = {
           format = "<span size='28pt'></span>";
         };
-      };
 
-      "hyprland/workspaces" = {
-        format = "{name}";
+        "hyprland/workspaces" = {
+          format = "<b>{id}</b>  {windows}";
+          format-window-separator = "<span size='12pt'>  </span>";
+
+          window-rewrite-default = "󰘔";
+          window-rewrite = {
+            "class<kitty>" = "";
+            "class<librewolf" = "";
+            "class<discord>" = "";
+            "class<teams-for-linux>" = "󰊻";
+            "class<.*zathura.*>" = "";
+            "class<kitty> title<.*spotify.*>" = "";
+          };
+        };
       };
     };
     # colors
     # foreground  #c8d3f5
+    # new foreground #c0caf5
+
     # comments    #636da6
     style = ''
       * {
@@ -170,21 +206,26 @@
       }
 
       window#waybar {
-        background-color: #222436;
-        color: #c8d3f5;
-        border-bottom: 3px solid #454656;
+        background-color: #1a1b26;
+        color: #c0caf5;
+        border-bottom: 3px solid #636da6;
       }
 
       #clock {
         margin: 0px 10px;
         margin-bottom: 13px;
-        color: #c8d3f5;
+        color: #c0caf5;
       }
 
       #custom-nix {
         margin: 0px 24px;
         margin-top: -14px;
-        color: #86e1fc;
+        color: #7dcfff;
+      }
+
+      #tray {
+        margin: 5px 13px;
+        margin-bottom: 15px;
       }
 
       #battery {
@@ -197,7 +238,7 @@
 
       #info {
         background-color: #2b2c3d;
-        color: #c8d3f5;
+        color: #c0caf5;
         border: 3px solid #343544;
         border-radius: 15px;
         padding: 3px 12px 3px 12px;
@@ -219,8 +260,8 @@
       }
 
       #workspaces button.active {
-        border: 3px solid #c099ff;
-        color: #c8d3f5;
+        border: 3px solid #bb9af7;
+        color: #c0caf5;
       }
     '';
   };

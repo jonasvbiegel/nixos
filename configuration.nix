@@ -69,7 +69,7 @@
   services.mullvad-vpn.enable = true;
 
   # unclutter - hide cursor
-  services.unclutter.enable = true;
+  # services.unclutter.enable = true;
 
   #bluetooth
   hardware.bluetooth = {

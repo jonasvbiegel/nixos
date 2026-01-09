@@ -7,8 +7,8 @@
 }: {
   imports = [
     ./modules/nvim/nvim.nix
-    ./modules/i3/i3.nix
-    ./modules/i3/polybar.nix
+    # ./modules/i3/i3.nix
+    # ./modules/i3/polybar.nix
     ./modules/hyprland/hyprland.nix
   ];
 
@@ -25,7 +25,7 @@
 
     packages = with pkgs; [
       fastfetch
-      lf
+      yazi
       discord
       maim
       xclip
@@ -47,7 +47,10 @@
     ];
   };
 
-  wayland.windowManager.hyprland.enable = true;
+  wayland.windowManager.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+  };
 
   programs = {
     git = {
@@ -61,26 +64,23 @@
       enable = true;
       settings = {
         "signons.rememberSignons" = true;
-        "privary.clearOnShutdown.cookies" = false;
+        "privacy.clearOnShutdown.cookies" = false;
         "full-screen-api.ignore-widgets" = true;
       };
     };
 
     kitty = {
       enable = true;
-      # themeFile = "tokyo_night_night";
-      themeFile = "tokyo_night_moon";
+      themeFile = "tokyo_night_night";
       shellIntegration.enableZshIntegration = true;
       font = {
-        # package = pkgs.nerd-fonts.fira-code;
-        # name = "FiraCode Nerd Font Mono";
-        name = "Liga SFMono Nerd Font";
+        name = "Liga SFMono Nerd Font Medium";
         size = 18;
       };
       settings = {
-        # background_opacity = "0.95";
         window_padding_width = 4;
         modify_font = "cell_height 1px";
+        bold_font = "postscript_name=LigaSFMonoNerdFont-Bold";
         italic_font = "postscript_name=MapleMono-NF-Italic";
       };
       extraConfig = "
@@ -106,6 +106,11 @@
         clone = "(kitty 2> /dev/null &)";
         spotify = "spotify_player";
       };
+      initContent = "
+      bindkey -v
+      autoload -Uz compinit && compinit
+      zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+      ";
     };
 
     btop = {
@@ -113,50 +118,52 @@
       extraConfig = "theme_background = false";
     };
 
+    waybar.enable = true;
+
     zathura = {
       enable = true;
-      extraConfig = "
-        set selection-clipboard clipboard
-        set guioptions none
-
-        # Tokyo Night color scheme for Zathura.
-        # Original color scheme: https://github.com/enkia/tokyo-night-vscode-theme
-        # Provided for Zathura by https://github.com/CondensedMilk7
-        # Copy these lines into your ~/.config/zathura/zathurarc
-
-        set default-bg                  '#1a1b26'
-        set default-fg                  '#a9b1d6'
-
-        set statusbar-fg                '#a9b1d6'
-        set statusbar-bg                '#24283b'
-
-        set inputbar-bg                 '#1a1b26'
-        set inputbar-fg                 '#73daca'
-
-        set notification-bg             '#1a1b26'
-        set notification-fg             '#73daca'
-
-        set notification-error-bg       '#1a1b26'
-        set notification-error-fg       '#f7768e'
-
-        set notification-warning-bg     '#1a1b26'
-        set notification-warning-fg     '#f7768e'
-
-        set highlight-color             '#e0af68'
-        set highlight-active-color      '#9aa5ce'
-
-        set completion-bg               '#24283b'
-        set completion-fg               '#a9b1d6'
-
-        set completion-highlight-fg     '#9aa5ce'
-        set completion-highlight-bg     '24283b'
-
-        set recolor-lightcolor          'rgba(22, 22, 30, 1)'
-        set recolor-darkcolor           '#a9b1d6'
-
-        set recolor                     'true'
-        set recolor-keephue             'false'
-      ";
+      # extraConfig = "
+      #   set selection-clipboard clipboard
+      #   set guioptions none
+      #
+      #   # Tokyo Night color scheme for Zathura.
+      #   # Original color scheme: https://github.com/enkia/tokyo-night-vscode-theme
+      #   # Provided for Zathura by https://github.com/CondensedMilk7
+      #   # Copy these lines into your ~/.config/zathura/zathurarc
+      #
+      #   set default-bg                  '#1a1b26'
+      #   set default-fg                  '#a9b1d6'
+      #
+      #   set statusbar-fg                '#a9b1d6'
+      #   set statusbar-bg                '#24283b'
+      #
+      #   set inputbar-bg                 '#1a1b26'
+      #   set inputbar-fg                 '#73daca'
+      #
+      #   set notification-bg             '#1a1b26'
+      #   set notification-fg             '#73daca'
+      #
+      #   set notification-error-bg       '#1a1b26'
+      #   set notification-error-fg       '#f7768e'
+      #
+      #   set notification-warning-bg     '#1a1b26'
+      #   set notification-warning-fg     '#f7768e'
+      #
+      #   set highlight-color             '#e0af68'
+      #   set highlight-active-color      '#9aa5ce'
+      #
+      #   set completion-bg               '#24283b'
+      #   set completion-fg               '#a9b1d6'
+      #
+      #   set completion-highlight-fg     '#9aa5ce'
+      #   set completion-highlight-bg     '24283b'
+      #
+      #   set recolor-lightcolor          'rgba(22, 22, 30, 1)'
+      #   set recolor-darkcolor           '#a9b1d6'
+      #
+      #   set recolor                     'true'
+      #   set recolor-keephue             'false'
+      # ";
     };
 
     starship = {
@@ -184,6 +191,7 @@
 
   services = {
     systembus-notify.enable = true;
+
     dunst = {
       enable = true;
       iconTheme = {
@@ -198,14 +206,23 @@
           font = "Liga SFMono Nerd Font 14";
           width = 350;
           height = 100;
-          offset = "20x18";
+          offset = "24x23";
 
-          frame_color = "#343544";
-          background = "#2b2c3d";
-          foreground = "#c8d3f5";
+          transparency = 0;
+          frame_color = "#636da6";
+          background = "#1a1b26";
+          foreground = "#c0caf5";
           corner_radius = 15;
         };
       };
+    };
+
+    # funny battery stuff
+    cbatticon = {
+      enable = true;
+      commandCriticalLevel = ''notify-send "low battery!"'';
+      criticalLevelPercent = 10;
+      updateIntervalSeconds = 60;
     };
   };
 
